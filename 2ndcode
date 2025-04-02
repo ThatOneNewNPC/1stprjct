@@ -1,0 +1,21 @@
+import os
+import platform
+import subprocess
+
+def ping_address(address):
+    param = "-n 1" if platform.system().lower() == "windows" else "-c 1"
+    command = f"ping {param} {address}"
+    
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        return result.stdout
+    except Exception as e:
+        return f"Error: {e}"
+
+address = input("Enter IP address or website to ping: ")
+amnt = int(input("Enter number of pings: "))
+
+for i in range(amnt):
+    response = ping_address(address)
+    print(f"Ping {i+1}:")
+    print(response)
