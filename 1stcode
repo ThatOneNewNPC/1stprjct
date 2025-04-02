@@ -1,0 +1,12 @@
+import os
+import platform
+
+def ping_website(url):
+    param = "-n 1" if platform.system().lower() == "windows" else "-c 1"
+    
+website = input("Enter website to ping: ")
+amnt=int(input("Enter amount of pings: "))
+
+for _ in range(amnt):
+      ping_website(website)
+      print(_)
